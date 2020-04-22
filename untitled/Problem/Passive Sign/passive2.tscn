@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Problem/Passive Sign/passive2.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Problem/Passive Sign/download.png" type="Texture" id=3]
+[ext_resource path="res://Problem/Passive Sign/passive2.PNG" type="Texture" id=4]
+[ext_resource path="res://Problem/Passive Sign/negative.png" type="Texture" id=5]
+[ext_resource path="res://Problem/Passive Sign/positive.png" type="Texture" id=6]
+[ext_resource path="res://Problem/Resistor/Resistor1/8-BIT WONDER.TTF" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 9
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 11
+font_data = ExtResource( 7 )
+
+[node name="passive2" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 160.253, 87.8805 )
+
+[node name="download" type="Sprite" parent="."]
+position = Vector2( 158.953, 92.8427 )
+scale = Vector2( 1.54119, 1.54119 )
+texture = ExtResource( 3 )
+
+[node name="passive1" type="Sprite" parent="."]
+position = Vector2( 124.369, 95.1774 )
+scale = Vector2( 0.368803, 0.368803 )
+texture = ExtResource( 4 )
+
+[node name="option1" type="Button" parent="."]
+margin_left = 53.9619
+margin_top = 127.689
+margin_right = 123.962
+margin_bottom = 167.689
+icon = ExtResource( 5 )
+flat = true
+
+[node name="opttion2" type="Button" parent="."]
+margin_left = 149.362
+margin_top = 127.977
+margin_right = 228.362
+margin_bottom = 165.977
+icon = ExtResource( 6 )
+flat = true
+
+[node name="question" type="RichTextLabel" parent="."]
+margin_left = 10.084
+margin_top = 7.56302
+margin_right = 294.084
+margin_bottom = 60.563
+custom_fonts/normal_font = SubResource( 1 )
+text = "get the passive sign convention of the load"
+
+[node name="result" type="RichTextLabel" parent="."]
+margin_left = 221.0
+margin_top = 89.0
+margin_right = 318.0
+margin_bottom = 147.0
+custom_fonts/normal_font = SubResource( 2 )
+[connection signal="pressed" from="option1" to="." method="_on_option1_pressed"]
+[connection signal="pressed" from="opttion2" to="." method="_on_opttion2_pressed"]
