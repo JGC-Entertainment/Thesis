@@ -33,6 +33,8 @@ config/icon="res://icon.png"
 [autoload]
 
 ResourceLoader="*res://ResourceLoader.gd"
+global1="*res://Global Script/global1.gd"
+global2="*res://Global Script/global2.gd"
 
 [display]
 
@@ -64,6 +66,14 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+ui_f={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [rendering]

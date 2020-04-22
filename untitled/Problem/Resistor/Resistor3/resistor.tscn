@@ -1,0 +1,269 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Problem/Resistor/Resistor3/Main.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Problem/Resistor/Resistor3/download.png" type="Texture" id=3]
+[ext_resource path="res://Problem/Resistor/Resistor3/white-png-6.png" type="Texture" id=4]
+[ext_resource path="res://Problem/Resistor/Resistor3/pixil-frame-0.png" type="Texture" id=5]
+[ext_resource path="res://Problem/Resistor/Resistor3/8-BIT WONDER.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Problem/Resistor/Resistor3/firstdown.gd" type="Script" id=7]
+[ext_resource path="res://Problem/Resistor/Resistor3/down1.png" type="Texture" id=8]
+[ext_resource path="res://Problem/Resistor/Resistor3/down2.png" type="Texture" id=9]
+[ext_resource path="res://Problem/Resistor/Resistor3/down3.png" type="Texture" id=10]
+[ext_resource path="res://Problem/Resistor/Resistor3/firstup.gd" type="Script" id=11]
+[ext_resource path="res://Problem/Resistor/Resistor3/up1.png" type="Texture" id=12]
+[ext_resource path="res://Problem/Resistor/Resistor3/up2.png" type="Texture" id=13]
+[ext_resource path="res://Problem/Resistor/Resistor3/up3.png" type="Texture" id=14]
+[ext_resource path="res://Problem/Resistor/Resistor3/seconddown.gd" type="Script" id=15]
+[ext_resource path="res://Problem/Resistor/Resistor3/secondup.gd" type="Script" id=16]
+[ext_resource path="res://Problem/Resistor/Resistor3/thirddown.gd" type="Script" id=17]
+[ext_resource path="res://Problem/Resistor/Resistor3/thirdown.gd" type="Script" id=18]
+[ext_resource path="res://Problem/Resistor/Resistor3/Button.png" type="Texture" id=19]
+[ext_resource path="res://Problem/Resistor/Resistor3/button2.png" type="Texture" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 6 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "downanim",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "upanim",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "downanim",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "upanim",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "downanim",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "downanim",
+"speed": 5.0
+} ]
+
+[node name="main" type="Control"]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+sprite_path = NodePath("firstsprite")
+second_sprite_path = NodePath("secondsprite")
+third_sprite_path = NodePath("thirdsprite")
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 161.813, 90.2145 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 0.92549, 0.592157, 0.592157, 1 )
+position = Vector2( 169, 99 )
+scale = Vector2( 1.68662, 1.26836 )
+texture = ExtResource( 3 )
+
+[node name="thirdsprite" type="Sprite" parent="."]
+position = Vector2( 141, 66 )
+scale = Vector2( 0.0266667, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="secondsprite" type="Sprite" parent="."]
+position = Vector2( 120, 70 )
+scale = Vector2( 0.0252883, 0.109464 )
+texture = ExtResource( 4 )
+
+[node name="firstsprite" type="Sprite" parent="."]
+position = Vector2( 95, 70 )
+scale = Vector2( 0.0226459, 0.111667 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 230, 89 )
+scale = Vector2( 3.91519, 4.159 )
+texture = ExtResource( 5 )
+
+[node name="resvalue" type="RichTextLabel" parent="."]
+margin_left = 99.0
+margin_top = 122.0
+margin_right = 277.0
+margin_bottom = 144.0
+custom_fonts/normal_font = SubResource( 1 )
+
+[node name="result" type="RichTextLabel" parent="."]
+margin_left = 99.0
+margin_top = 148.0
+margin_right = 315.0
+margin_bottom = 177.0
+custom_fonts/normal_font = SubResource( 1 )
+
+[node name="answer" type="RichTextLabel" parent="."]
+margin_left = 199.0
+margin_top = 3.0
+margin_right = 308.0
+margin_bottom = 48.0
+custom_fonts/normal_font = SubResource( 2 )
+
+[node name="firstdown" type="Button" parent="."]
+editor/display_folded = true
+margin_left = 79.0
+margin_top = 9.0
+margin_right = 111.0
+margin_bottom = 41.0
+flat = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="arrowanim" type="AnimatedSprite" parent="firstdown"]
+position = Vector2( 15.875, 15.875 )
+scale = Vector2( 0.503906, 0.503906 )
+frames = SubResource( 3 )
+animation = "downanim"
+
+[node name="firstup" type="Button" parent="."]
+editor/display_folded = true
+margin_left = 79.0
+margin_top = 91.0
+margin_right = 111.0
+margin_bottom = 123.0
+flat = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="arrowanim" type="AnimatedSprite" parent="firstup"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 4 )
+animation = "upanim"
+
+[node name="seconddown" type="Button" parent="."]
+editor/display_folded = true
+margin_left = 102.0
+margin_top = 9.0
+margin_right = 134.0
+margin_bottom = 41.0
+flat = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="arrowanim" type="AnimatedSprite" parent="seconddown"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 5 )
+animation = "downanim"
+
+[node name="secondup" type="Button" parent="."]
+editor/display_folded = true
+margin_left = 103.0
+margin_top = 91.0
+margin_right = 135.0
+margin_bottom = 123.0
+flat = true
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="arrowanim" type="AnimatedSprite" parent="secondup"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 6 )
+animation = "upanim"
+
+[node name="thirddown" type="Button" parent="."]
+editor/display_folded = true
+margin_left = 125.0
+margin_top = 11.0
+margin_right = 157.0
+margin_bottom = 43.0
+flat = true
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="arrowanim" type="AnimatedSprite" parent="thirddown"]
+position = Vector2( 15.875, 13.875 )
+scale = Vector2( 0.503907, 0.503907 )
+frames = SubResource( 7 )
+animation = "downanim"
+
+[node name="thirdown" type="Button" parent="."]
+editor/display_folded = true
+margin_left = 126.0
+margin_top = 91.0
+margin_right = 158.0
+margin_bottom = 123.0
+flat = true
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="arrowanim" type="AnimatedSprite" parent="thirdown"]
+position = Vector2( 16, 16 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 8 )
+animation = "downanim"
+
+[node name="calculate" type="Button" parent="."]
+margin_left = 17.0
+margin_top = 119.0
+margin_right = 93.0
+margin_bottom = 141.0
+icon = ExtResource( 19 )
+flat = true
+
+[node name="submit" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 144.0
+margin_right = 92.0
+margin_bottom = 166.0
+icon = ExtResource( 20 )
+flat = true
+[connection signal="pressed" from="firstdown" to="." method="_on_firstdown_pressed"]
+[connection signal="pressed" from="firstup" to="." method="_on_firstup_pressed"]
+[connection signal="pressed" from="seconddown" to="." method="_on_seconddown_pressed"]
+[connection signal="pressed" from="secondup" to="." method="_on_secondup_pressed"]
+[connection signal="pressed" from="thirddown" to="." method="_on_thirddown_pressed"]
+[connection signal="pressed" from="thirdown" to="." method="_on_thirdown_pressed"]
+[connection signal="pressed" from="calculate" to="." method="_on_calculate_pressed"]
+[connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
