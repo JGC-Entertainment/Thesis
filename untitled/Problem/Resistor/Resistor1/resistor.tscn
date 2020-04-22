@@ -135,9 +135,11 @@ margin_top = 3.0
 margin_right = 308.0
 margin_bottom = 48.0
 custom_fonts/normal_font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="firstdown" type="Button" parent="."]
-editor/display_folded = true
 margin_left = 79.0
 margin_top = 9.0
 margin_right = 111.0
@@ -155,7 +157,6 @@ frames = SubResource( 3 )
 animation = "downanim"
 
 [node name="firstup" type="Button" parent="."]
-editor/display_folded = true
 margin_left = 79.0
 margin_top = 91.0
 margin_right = 111.0
@@ -173,7 +174,6 @@ frames = SubResource( 4 )
 animation = "upanim"
 
 [node name="seconddown" type="Button" parent="."]
-editor/display_folded = true
 margin_left = 102.0
 margin_top = 9.0
 margin_right = 134.0
@@ -191,7 +191,6 @@ frames = SubResource( 5 )
 animation = "downanim"
 
 [node name="secondup" type="Button" parent="."]
-editor/display_folded = true
 margin_left = 103.0
 margin_top = 91.0
 margin_right = 135.0
@@ -209,7 +208,6 @@ frames = SubResource( 6 )
 animation = "upanim"
 
 [node name="thirddown" type="Button" parent="."]
-editor/display_folded = true
 margin_left = 125.0
 margin_top = 11.0
 margin_right = 157.0
@@ -227,7 +225,6 @@ frames = SubResource( 7 )
 animation = "downanim"
 
 [node name="thirdown" type="Button" parent="."]
-editor/display_folded = true
 margin_left = 126.0
 margin_top = 91.0
 margin_right = 158.0
