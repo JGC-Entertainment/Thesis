@@ -155,7 +155,7 @@ position = Vector2( 144.001, 121.513 )
 scale = Vector2( 5.3941, 5.09291 )
 frames = SubResource( 2 )
 animation = "current"
-frame = 43
+frame = 11
 playing = true
 
 [node name="current" type="RichTextLabel" parent="."]
