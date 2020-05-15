@@ -1,61 +1,60 @@
 extends KinematicBody2D
+class_name Player
 
-var PlayerStats = ResourceLoader.PlayerStats
-var MainInstances = ResourceLoader.MainInstances
+const ACCELERATION = 800
+const MAX_SPEED = 128
+const FRICTION = 750
 
-export (int) var ACCELERATION = 512
-export (int) var MAX_SPEED = 64
-export (float) var FRICTION = 0.25
+var velocity = Vector2.ZERO
+var movement_disabled = false
 
-var motion = Vector2.ZERO
-var input_vector_hist = Vector2.ZERO
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
+onready var cameraFollow = $PlayerCameraFollow
 
-onready var sprite = $Sprite
-onready var spriteAnimator = $SpriteAnimator
-
+signal interact_with_object #emitted when player interacts with an InteractableObject
+# warning-ignore:unused_signal
 signal hit_door(door)
 
 func _ready():
-	MainInstances.Player = self
-
-func _exit_tree():
-	MainInstances.Player = null
+	GameManager.Player = self
+	animationTree.active = true
+	call_deferred("assign_world_camera")
 
 func _physics_process(delta):
-	move(delta)
+	interact()
+	if movement_disabled == false:
+		move(delta)
 
-
+# function for Player movement
 func move(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized() # This normalizes input_vector to unity. This allows diagonal motion to have the same speed as vertical and horizontal motion.
 	
 	if input_vector != Vector2.ZERO:
-		input_vector_hist = input_vector
-		motion += input_vector * ACCELERATION * delta
-		motion = motion.clamped(MAX_SPEED)
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationState.travel("Run")
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
-		motion = motion.linear_interpolate(Vector2.ZERO, FRICTION)
-		
-	update_animation(input_vector)
-	move_and_collide(motion * delta)
+		animationState.travel("Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+# warning-ignore:return_value_discarded
+	velocity = move_and_slide(velocity)
 
-func update_animation(input_vector):
-	if input_vector != Vector2.ZERO:
-		if input_vector.x == 0 and input_vector.y != 0:
-			if input_vector.y < 0:
-				spriteAnimator.play("Walk (Back)")
-			elif input_vector.y > 0:
-				spriteAnimator.play("Walk (Front)")
-		elif input_vector.x != 0:
-			sprite.scale.x = sign(input_vector.x) * 0.736
-			spriteAnimator.play("Walk (Right)")
-	else:
-		if input_vector_hist.x > 0:
-			spriteAnimator.play("Idle (Right)")
-		elif input_vector_hist.x < 0:
-			spriteAnimator.play("Idle (Right)")
-		elif input_vector_hist.y > 0:
-			spriteAnimator.play("Idle (Front)")
-		elif input_vector_hist.y < 0:
-			spriteAnimator.play("Idle (Back)")
+func interact():
+	if Input.is_action_just_pressed("Interact"):
+		emit_signal("interact_with_object")
+
+func save():
+	return {
+		"filename": filename,
+		"parent": get_parent().get_path(),
+		"position_x" : position.x,
+		"position_y" : position.y,
+	}
+
+func assign_world_camera():
+	cameraFollow.remote_path = GameManager.WorldCamera.get_path()
