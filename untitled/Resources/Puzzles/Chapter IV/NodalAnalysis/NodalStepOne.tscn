@@ -13,6 +13,7 @@ extents = Vector2( 115.784, 0.805969 )
 script = ExtResource( 4 )
 
 [node name="Background" parent="." index="0"]
+visible = false
 margin_top = -0.698338
 margin_bottom = -0.698334
 color = Color( 0.447059, 0.447059, 0.447059, 1 )

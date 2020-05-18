@@ -6,11 +6,10 @@
 [node name="BasicCircuitElement" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="PolarityLabel" parent="." index="4"]
-margin_left = 90.8475
-margin_top = 42.7208
-margin_right = 211.848
-margin_bottom = 56.7208
-text = "With Polarity P = iv"
+[node name="PolarityLabel" parent="." index="6"]
+margin_left = 58.1368
+margin_top = 37.1918
+margin_right = 179.137
+margin_bottom = 51.1918
 [connection signal="pressed" from="Arrow" to="." method="_on_Arrow_pressed"]
 [connection signal="pressed" from="Arrow2" to="." method="_on_Arrow2_pressed"]

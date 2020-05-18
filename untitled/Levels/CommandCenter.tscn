@@ -43,7 +43,7 @@ position = Vector2( 168, 72 )
 [node name="SideDoorPanel" parent="FrontDoor2" index="5" instance=ExtResource( 8 )]
 position = Vector2( -38, -28 )
 rotation = -1.5708
-puzzlePath = "res://Resources/Puzzles/Chapter V/ConductorInductor/ConductorEquivalent.tscn"
+puzzlePath = "res://Resources/Puzzles/Chapter I/Power/PowerPuzzle.tscn"
 
 [node name="PowerController" parent="." index="5" instance=ExtResource( 6 )]
 position = Vector2( 166, -223 )

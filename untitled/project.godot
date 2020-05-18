@@ -73,6 +73,16 @@ _global_script_classes=[ {
 "class": "ResistorPuzzle",
 "language": "GDScript",
 "path": "res://Resources/Puzzles/ResistorPuzzle.gd"
+}, {
+"base": "Puzzle",
+"class": "SuitPuzzle",
+"language": "GDScript",
+"path": "res://Resources/Puzzles/Chapter II/SourcesQuestions/SuitQuestions.gd"
+}, {
+"base": "Puzzle",
+"class": "WeaponPuzzles",
+"language": "GDScript",
+"path": "res://Resources/Puzzles/Chapter II/KVLKCL/WeaponPuzzles.gd"
 } ]
 _global_script_class_icons={
 "CircuitElement": "",
@@ -87,7 +97,9 @@ _global_script_class_icons={
 "Puzzle": "",
 "PuzzleObject": "",
 "Resistor": "",
-"ResistorPuzzle": ""
+"ResistorPuzzle": "",
+"SuitPuzzle": "",
+"WeaponPuzzles": ""
 }
 
 [application]
