@@ -5,7 +5,10 @@ var WorldCamera = null
 var CurrentLevel = null
 var GameProgress = null
 var CurrentChapter = null
-var PuzzleData = null
+var PuzzleData = {}
+var WORLD = null
+var UI = null
+var EventPrompts = {}
 var state = GAME_STATE.MAIN_MENU
 
 const startMenu = "res://Systems/UI/StartMenu.tscn"
@@ -78,17 +81,20 @@ func save_data():
 			}
 		},
 		
-		"GameProgress" : GameProgress,
+		"GameProgress" : ProgressManager.progress,
 		
 		"CurrentChapter" : CurrentChapter,
 		
-		"PuzzleData" : PuzzleData
+		"PuzzleData" : PuzzleData,
+		
+		"EventPrompts" : EventPrompts,
 	}
 
 func load_data():
 	SaveAndLoad.load_game()
 
 func change_levels(door):
+	SaveAndLoad.save_event_prompts()
 	var offset = GameManager.CurrentLevel.position
 	GameManager.CurrentLevel.queue_free()
 	var NewLevel = load(door.new_level_path)
@@ -99,6 +105,7 @@ func change_levels(door):
 	newLevel.position = door.position - exit_position
 	print("Entered ", GameManager.CurrentLevel.name)
 	self.emit_signal("changed_level")
+	SaveAndLoad.load_event_prompts()
 
 func get_door_with_connection(notDoor, connection):
 	var doors = get_tree().get_nodes_in_group("Door")
@@ -108,5 +115,4 @@ func get_door_with_connection(notDoor, connection):
 	return null
 
 func door_hit(door):
-	print("door hit")
 	call_deferred("change_levels", door)

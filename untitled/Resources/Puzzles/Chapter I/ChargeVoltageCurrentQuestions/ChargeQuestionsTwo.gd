@@ -10,9 +10,12 @@ var WarningLabelCorrect = "You Are Correct!"
 var Counter = 0.01
 var x = 0
 var y = 0
+var puzzleObject
+
 
 
 func _ready():
+	puzzleObject = get_parent()
 	$InstructionLabel1/Positive.grab_focus()
 	while [x < 37]:
 		yield(get_tree().create_timer(Counter), "timeout")
@@ -41,6 +44,7 @@ func _on_Positive_text_entered(new_text):
 func _on_Negative_text_entered(new_text):
 	$WarningLabel.text = ""
 	if new_text == "negative" or new_text == "positive":
+		
 		$InstructionLabel2/Neutral.grab_focus()
 		$InstructionLabel1/Negative.visible = false
 		while [y < 59]:
@@ -61,6 +65,7 @@ func _on_Negative_text_entered(new_text):
 func _on_Neutral_text_entered(new_text):
 	$WarningLabel.text = ""
 	if new_text == "neutral" or new_text == "Neutral":
+		puzzleObject.update_puzzle(true)
 		$InstructionLabel2/Neutral.visible = false
 		while [y < 16]:
 			yield(get_tree().create_timer(Counter), "timeout")
